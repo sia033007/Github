@@ -18,7 +18,7 @@ public class Coin : MonoBehaviour
     }
     IEnumerator InstanciateCoin()
     {
-        GameObject myCoin = Instantiate(coinPrefab,new Vector3(Random.Range(-4,4.37f),transform.position.y,Random.Range(-3.85f,4)),Quaternion.identity) as GameObject;
+        GameObject myCoin = Instantiate(coinPrefab,new Vector3(Random.Range(-4,4.37f),0.41f,Random.Range(-3.85f,4)),Quaternion.identity) as GameObject;
         yield return new WaitForSeconds(2f);
         Destroy(myCoin.gameObject);
         StartCoroutine(InstanciateCoin());
