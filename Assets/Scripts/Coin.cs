@@ -13,7 +13,7 @@ public class Coin : MonoBehaviour
         
     }
     private void OnGUI() {
-        GUI.Label(new Rect(20,100,300,100),"Score : " + point);
+        GUI.Box(new Rect(430,20,100,25),"Score : " + point);
         GUI.color = Color.yellow;
     }
     IEnumerator InstanciateCoin()
