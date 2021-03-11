@@ -10,6 +10,23 @@ public class Coin : MonoBehaviour
     void Start()
     {
         StartCoroutine(InstanciateCoin());
+
+        Character character1 = new Character("Amin","Male","Iran",27);
+        Character character2 = new Character("Jack","Male","America",30);
+        Character character3 = new Character("Sylvia","Female","Russia",25);
+
+        character1.person();
+        character2.person();
+        character3.person();
+
+        Weapon weapon1 = new Weapon("Klash",100,50);
+        Weapon weapon2 = new Weapon("Kolt",50,20);
+
+        Debug.Log(weapon1.name);
+        Debug.Log(weapon2.name);
+
+        weapon1.myWeapon();
+        weapon2.myWeapon();
         
     }
     private void OnGUI() {
@@ -22,5 +39,41 @@ public class Coin : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Destroy(myCoin.gameObject);
         StartCoroutine(InstanciateCoin());
+    }
+}
+public class Weapon
+{
+    public string name;
+    public int bullet;
+    public int price;
+
+    public Weapon(string myName, int myBullet, int myPrice)
+    {
+        name = myName;
+        bullet = myBullet;
+        price = myPrice;
+    }
+    public void myWeapon()
+    {
+        Debug.Log($"This weapon is {name} , With {bullet} bullets and {price} dollars");
+    }
+}
+public class Character
+{
+    public string name;
+    public string gender;
+    public string nationality;
+    public int age;
+
+    public Character(string myName, string myGender, string myNationality, int myAge)
+    {
+        name = myName;
+        gender = myGender;
+        nationality = myNationality;
+        age = myAge;
+    }
+    public void person()
+    {
+        Debug.Log($"My name is {name}, I'm a {gender}, {age} years old from {nationality}");
     }
 }

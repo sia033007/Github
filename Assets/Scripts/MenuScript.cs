@@ -11,13 +11,15 @@ public class MenuScript : MonoBehaviour
     public GameObject menuPanel;
     private void Start() {
         NetworkingManager.Singleton.ConnectionApprovalCallback += ApprovalCheck;
-        Game game1 = new Game("Strategy",1000,"Iran");
-        Game game2 = new Game("Casual",2000,"Switzerland");
-
-        Debug.Log(game1.country);
-        Debug.Log(game2.country);
         
-        game1.mygame();
+        Movie movie1 = new Movie("Marmoulak", "comedy", "IRAN");
+        Movie movie2 = new Movie("Interstellar", "sci-fi","USA");
+
+        Debug.Log(movie1.name);
+        Debug.Log(movie2.name);
+
+        movie1.film();
+        movie2.film();
     }
     private void ApprovalCheck(byte[] connectionData, ulong clientID, NetworkingManager.ConnectionApprovedDelegate callback)
     {
@@ -57,20 +59,20 @@ public class MenuScript : MonoBehaviour
     }
    
 }
-public class Game
+public class Movie
 {
     public string genre;
-    public int price;
     public string country;
+    public string name;
 
-    public Game(string myGenre, int myPrice, string myCountry)
+    public Movie(string myname, string mygenre, string mycountry)
     {
-        genre = myGenre;
-        price = myPrice;
-        country = myCountry;
+        name = myname;
+        genre = mygenre;
+        country = mycountry;
     }
-    public void mygame()
+    public void film()
     {
-        Debug.Log("This game genre is " + genre + " from " + country);
+        Debug.Log(name + $" is a film in genre of {genre} from {country}");
     }
 }
